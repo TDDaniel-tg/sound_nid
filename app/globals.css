@@ -1,26 +1,243 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0d0d0d;
+  --color-surface: #292929;
+  --color-border: #3a3a3a;
+  --color-accent: #841010;
+  --color-accent-hover: #9e1212;
+  --color-silver: #BEBEBE;
+  --color-text: #EFEFEF;
+  --color-white: #ffffff;
+
+  --font-bebas: var(--font-bebas);
+  --font-manrope: var(--font-manrope);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===== BASE ===== */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #841010 #0d0d0d;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0d0d0d;
+  color: #EFEFEF;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #841010;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: normal;
+}
+
+.custom-cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(132, 16, 16, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transition: width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+.custom-cursor-ring.hovering {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(158, 18, 18, 0.8);
+}
+
+/* ===== MARQUEE ===== */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-left {
+  animation: marquee-left 40s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 40s linear infinite;
+}
+
+/* ===== FLOATING LABELS ===== */
+.float-label-group {
+  position: relative;
+}
+
+.float-label-group input,
+.float-label-group textarea,
+.float-label-group select {
+  background: transparent;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 20px 16px 8px;
+  width: 100%;
+  color: #EFEFEF;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.float-label-group input:focus,
+.float-label-group textarea:focus,
+.float-label-group select:focus {
+  border-color: #841010;
+}
+
+.float-label-group label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #BEBEBE;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.float-label-group textarea ~ label {
+  top: 20px;
+  transform: translateY(0);
+}
+
+.float-label-group input:focus ~ label,
+.float-label-group input:not(:placeholder-shown) ~ label,
+.float-label-group textarea:focus ~ label,
+.float-label-group textarea:not(:placeholder-shown) ~ label,
+.float-label-group select:focus ~ label,
+.float-label-group select:valid ~ label {
+  top: 8px;
+  transform: translateY(0);
+  font-size: 0.75rem;
+  color: #841010;
+}
+
+/* ===== BUTTON HOVER FILL ===== */
+.btn-fill-hover {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-fill-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #9e1212;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn-fill-hover:hover::before {
+  transform: scaleX(1);
+}
+
+/* ===== SVG LINE ANIMATION ===== */
+.hero-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: draw-line 2s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+}
+
+@keyframes draw-line {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ===== SECTION DIVIDER ===== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3a3a3a 20%, #841010 50%, #3a3a3a 80%, transparent);
+  position: relative;
+}
+
+.section-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: #841010;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(132, 16, 16, 0.6);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #841010;
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-left, .marquee-right {
+    animation: none !important;
+  }
+}
+
+/* ===== EMBLA CAROUSEL ===== */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
 }
