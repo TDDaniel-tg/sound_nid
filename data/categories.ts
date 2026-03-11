@@ -16,7 +16,7 @@ export const categories: Category[] = [
     {
         id: "sound",
         name: "Звуковое оборудование",
-        image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/sound.jpg",
         items: [
             { id: "s1", name: "L-Acoustics A15", description: "Линейный массив премиум-класса", image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&q=80" },
             { id: "s2", name: "NEXO STM M28", description: "Модульная система звукоусиления", image: "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=400&h=300&fit=crop&q=80" },
@@ -28,7 +28,7 @@ export const categories: Category[] = [
     {
         id: "light",
         name: "Световое оборудование",
-        image: "https://images.unsplash.com/photo-1504509546545-e000b4a62425?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/light.jpg",
         items: [
             { id: "l1", name: "Moving Head Wash", description: "Заливающий свет с подвижной головой", image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=300&fit=crop&q=80" },
             { id: "l2", name: "LED PAR", description: "LED-прожекторы для заливки", image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=300&fit=crop&q=80" },
@@ -39,7 +39,7 @@ export const categories: Category[] = [
     {
         id: "sfx",
         name: "Спецэффекты",
-        image: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/sfx.jpg",
         items: [
             { id: "fx1", name: "Дым-машина", description: "Генератор сценического дыма", image: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=400&h=300&fit=crop&q=80" },
             { id: "fx2", name: "Генератор тумана", description: "Создание атмосферного тумана", image: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=400&h=300&fit=crop&q=80" },
@@ -50,7 +50,7 @@ export const categories: Category[] = [
     {
         id: "led",
         name: "LED-экраны",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/led.jpg",
         items: [
             { id: "led1", name: "LED-экран 2×3 м", description: "Шаг пикселя P2.6, indoor", image: "https://images.unsplash.com/photo-1563089145-599997674d42?w=400&h=300&fit=crop&q=80" },
             { id: "led2", name: "LED-экран 2.5×3.5 м", description: "Шаг пикселя P3.9, универсальный", image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=400&h=300&fit=crop&q=80" },
@@ -59,17 +59,17 @@ export const categories: Category[] = [
     {
         id: "plasma",
         name: "Плазменные панели",
-        image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/plasma.jpg",
         items: [
-            { id: "p1", name: "ТВ 55\" на стойке", description: "55\" панель с мобильной стойкой", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop&q=80" },
-            { id: "p2", name: "ТВ 65\" на стойке", description: "65\" панель с мобильной стойкой", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop&q=80" },
+            { id: "p1", name: 'ТВ 55" на стойке', description: '55" панель с мобильной стойкой', image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop&q=80" },
+            { id: "p2", name: 'ТВ 65" на стойке', description: '65" панель с мобильной стойкой', image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=400&h=300&fit=crop&q=80" },
             { id: "p3", name: "ТВ 75\" на стойке", description: "75\" панель с мобильной стойкой", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop&q=80" },
         ],
     },
     {
         id: "backline",
         name: "Бэклайн",
-        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/backline.jpg",
         items: [
             { id: "b1", name: "Yamaha Tour Custom Maple", description: "BD22, Tom 10/12, FT 16, SN 14 + фурнитура", image: "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=400&h=300&fit=crop&q=80" },
             { id: "b2", name: "Nord Stage 3", description: "Клавишные, 88 клавиш", image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=400&h=300&fit=crop&q=80" },
@@ -79,11 +79,17 @@ export const categories: Category[] = [
     {
         id: "dj",
         name: "Диджеи",
-        image: "https://images.unsplash.com/photo-1571266028243-3716f02d2d56?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/dj.jpg",
         items: [
             { id: "dj1", name: "Pioneer RX3", description: "Автономный DJ-контроллер", image: "https://images.unsplash.com/photo-1571266028243-3716f02d2d56?w=400&h=300&fit=crop&q=80" },
             { id: "dj2", name: "CDJ 3000 + A9", description: "Топовый клубный сетап", image: "https://images.unsplash.com/photo-1583795484071-3c453e3a7c71?w=400&h=300&fit=crop&q=80" },
             { id: "dj3", name: "CDJ 3000 + DJM NXS2", description: "Профессиональный сетап", image: "https://images.unsplash.com/photo-1583795484071-3c453e3a7c71?w=400&h=300&fit=crop&q=80" },
         ],
+    },
+    {
+        id: "cover_bands",
+        name: "Кавер группы",
+        image: "/telegram_assets/cover_bands.jpg",
+        items: [],
     },
 ];

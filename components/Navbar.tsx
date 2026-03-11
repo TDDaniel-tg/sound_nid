@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "./Logo";
 
 const navLinks = [
     { label: "Услуги", href: "#services" },
@@ -32,8 +33,8 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 {/* Logo */}
-                <a href="#" className="font-bebas text-3xl tracking-wider text-white hover:text-accent transition-colors">
-                    SOUND <span className="text-accent">NID</span>
+                <a href="#" className="hover:opacity-80 transition-opacity">
+                    <Logo />
                 </a>
 
                 {/* Desktop nav */}

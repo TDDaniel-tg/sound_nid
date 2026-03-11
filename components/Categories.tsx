@@ -14,7 +14,41 @@ export default function Categories() {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     const handleClick = (id: string) => {
-        setActiveId(activeId === id ? null : id);
+        const map: Record<string, string | null> = {
+            sound: 'equipment-sound',
+            light: 'light-solutions',
+            sfx: 'equipment-sound',
+            led: 'equipment-led',
+            plasma: 'equipment-led',
+            backline: 'equipment-sound',
+            dj: 'djs',
+            cover_bands: null,
+        };
+
+        const target = map[id];
+        
+        if (target) {
+             if (target.startsWith('equipment-')) {
+                 const tabId = target.replace('equipment-', '');
+                 // Switch tab using custom event
+                 window.dispatchEvent(new CustomEvent('changeEquipmentTab', { detail: tabId }));
+                 const eqSection = document.getElementById('equipment');
+                 if (eqSection) {
+                     const y = eqSection.getBoundingClientRect().top + window.scrollY - 100;
+                     window.scrollTo({ top: y, behavior: 'smooth' });
+                 }
+             } else {
+                 const section = document.getElementById(target);
+                 if (section) {
+                     const y = section.getBoundingClientRect().top + window.scrollY - 100;
+                     window.scrollTo({ top: y, behavior: 'smooth' });
+                 }
+             }
+             setActiveId(null);
+        } else {
+             // For cover_bands or local slider
+             setActiveId(activeId === id ? null : id);
+        }
     };
 
     const activeCategory = categories.find((c) => c.id === activeId);

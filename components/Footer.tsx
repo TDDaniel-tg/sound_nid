@@ -2,6 +2,7 @@
 
 import { useSiteData } from "./SiteDataContext";
 import SectionReveal from "./SectionReveal";
+import Logo from "./Logo";
 
 export default function Footer() {
     const { data } = useSiteData();
@@ -10,12 +11,9 @@ export default function Footer() {
         <footer className="bg-surface/50 border-t border-border py-16 px-6">
             <div className="max-w-7xl mx-auto">
                 <SectionReveal>
-                    <div className="text-center mb-10">
-                        <a
-                            href="#"
-                            className="font-bebas text-5xl md:text-6xl tracking-wider text-white inline-block mb-6"
-                        >
-                            SOUND <span className="text-accent">NID</span>
+                    <div className="text-center mb-10 flex justify-center">
+                        <a href="#" className="inline-block hover:opacity-80 transition-opacity">
+                            <Logo className="scale-125" />
                         </a>
                     </div>
 

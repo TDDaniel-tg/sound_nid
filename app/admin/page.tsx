@@ -5,6 +5,7 @@ import { SiteDataProvider, useSiteData, SiteData } from "@/components/SiteDataCo
 import { Category, CategoryItem } from "@/data/categories";
 import { Solution } from "@/data/solutions";
 import { EquipmentCategory } from "@/data/equipment";
+import { DJ } from "@/data/djs";
 
 function AdminContent() {
     const { data, loading, saving, error, setData, saveData, resetToDefaults } = useSiteData();
@@ -33,9 +34,11 @@ function AdminContent() {
     const sections = [
         { id: "contacts", label: "Контакты" },
         { id: "texts", label: "Тексты" },
-        { id: "solutions", label: "Комплекты" },
-        { id: "categories", label: "У нас есть" },
-        { id: "equipment", label: "Каталог" },
+        { id: "solutions", label: "Готовые комплекты" },
+        { id: "lightSolutions", label: "Световые компл." },
+        { id: "categories", label: "Оборудование (Слайдер)" },
+        { id: "equipment", label: "Каталог (Вкладки)" },
+        { id: "djs", label: "Диджеи" },
     ];
 
     if (loading) {
@@ -141,11 +144,17 @@ function AdminContent() {
                     {activeSection === "solutions" && (
                         <SolutionsEditor data={data} update={update} />
                     )}
+                    {activeSection === "lightSolutions" && (
+                        <LightSolutionsEditor data={data} update={update} />
+                    )}
                     {activeSection === "categories" && (
                         <CategoriesEditor data={data} update={update} />
                     )}
                     {activeSection === "equipment" && (
                         <EquipmentEditor data={data} update={update} />
+                    )}
+                    {activeSection === "djs" && (
+                        <DJsEditor data={data} update={update} />
                     )}
                 </div>
             </div>
@@ -318,6 +327,120 @@ function SolutionsEditor({
                         <Field
                             label="Цена"
                             value={sol.price}
+                            onChange={(v) => updateSolution(i, { price: v })}
+                        />
+                    </div>
+                    <Field
+                        label="URL фото"
+                        value={sol.image}
+                        onChange={(v) => updateSolution(i, { image: v })}
+                        className="mt-4"
+                    />
+                    <TextArea
+                        label="Описание"
+                        value={sol.description}
+                        onChange={(v) => updateSolution(i, { description: v })}
+                        className="mt-4"
+                    />
+                    <div className="mt-4">
+                        <label className="text-silver text-sm mb-2 block">
+                            Состав (каждая позиция с новой строки)
+                        </label>
+                        <textarea
+                            value={sol.items.join("\n")}
+                            onChange={(e) =>
+                                updateSolution(i, {
+                                    items: e.target.value.split("\n").filter(Boolean),
+                                })
+                            }
+                            rows={4}
+                            className="w-full bg-bg border border-border rounded-lg px-4 py-3 text-text outline-none focus:border-accent transition-colors text-sm font-mono"
+                        />
+                    </div>
+                </AdminCard>
+            ))}
+        </div>
+    );
+}
+
+/* ==============================
+   LIGHT SOLUTIONS EDITOR
+   ============================== */
+function LightSolutionsEditor({
+    data,
+    update,
+}: {
+    data: SiteData;
+    update: (p: Partial<SiteData>) => void;
+}) {
+    const solutions = data.lightSolutions || [];
+
+    const updateSolution = (index: number, updated: Partial<Solution>) => {
+        const newSolutions = [...solutions];
+        newSolutions[index] = { ...newSolutions[index], ...updated };
+        update({ lightSolutions: newSolutions });
+    };
+
+    const addSolution = () => {
+        const id = `light_sol_${Date.now()}`;
+        const newSolution: Solution = {
+            id,
+            name: "Новый световой комплект",
+            image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop&q=80",
+            description: "Описание светового комплекта",
+            items: ["LED PAR × 4"],
+            price: "от 0 ₽",
+        };
+        update({ lightSolutions: [...solutions, newSolution] });
+    };
+
+    const removeSolution = (index: number) => {
+        if (confirm(`Удалить "${solutions[index].name}"?`)) {
+            update({ lightSolutions: solutions.filter((_, i) => i !== index) });
+        }
+    };
+
+    const moveSolution = (index: number, dir: -1 | 1) => {
+        const newIndex = index + dir;
+        if (newIndex < 0 || newIndex >= solutions.length) return;
+        const newSolutions = [...solutions];
+        [newSolutions[index], newSolutions[newIndex]] = [newSolutions[newIndex], newSolutions[index]];
+        update({ lightSolutions: newSolutions });
+    };
+
+    return (
+        <div className="space-y-6">
+            <div className="flex items-center justify-between mb-4">
+                <h2 className="font-bebas text-3xl tracking-wider">СВЕТОВЫЕ КОМПЛЕКТЫ</h2>
+                <button
+                    onClick={addSolution}
+                    className="bg-accent hover:bg-accent-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                >
+                    + Добавить
+                </button>
+            </div>
+
+            {solutions.map((sol, i) => (
+                <AdminCard
+                    key={sol.id}
+                    title={sol.name}
+                    actions={
+                        <div className="flex gap-2">
+                            <SmallBtn onClick={() => moveSolution(i, -1)} disabled={i === 0}>↑</SmallBtn>
+                            <SmallBtn onClick={() => moveSolution(i, 1)} disabled={i === solutions.length - 1}>↓</SmallBtn>
+                            <SmallBtn onClick={() => removeSolution(i)} danger>✕</SmallBtn>
+                        </div>
+                    }
+                >
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <Field
+                            label="Название"
+                            value={sol.name}
+                            onChange={(v) => updateSolution(i, { name: v })}
+                        />
+                        <Field
+                            label="Цена"
+                            value={sol.price || ""}
                             onChange={(v) => updateSolution(i, { price: v })}
                         />
                     </div>
@@ -675,6 +798,115 @@ function EquipmentEditor({
                     )}
                 </div>
             )}
+        </div>
+    );
+}
+
+/* ==============================
+   DJS EDITOR
+   ============================== */
+function DJsEditor({
+    data,
+    update,
+}: {
+    data: SiteData;
+    update: (p: Partial<SiteData>) => void;
+}) {
+    const djs = data.djs || [];
+
+    const updateDJ = (index: number, updated: Partial<DJ>) => {
+        const newDjs = [...djs];
+        newDjs[index] = { ...newDjs[index], ...updated };
+        update({ djs: newDjs });
+    };
+
+    const addDJ = () => {
+        const id = `dj_${Date.now()}`;
+        const newDj: DJ = {
+            id,
+            name: "Новый диджей",
+            image: "https://images.unsplash.com/photo-1571266028243-3716f02d2d56?w=600&h=800&fit=crop&q=80",
+            tags: ["Топ", "House", "Хедлайнер"],
+            experience: "Нет опыта",
+            description: "Описание диджея",
+        };
+        update({ djs: [...djs, newDj] });
+    };
+
+    const removeDJ = (index: number) => {
+        if (confirm(`Удалить диджея "${djs[index].name}"?`)) {
+            update({ djs: djs.filter((_, i) => i !== index) });
+        }
+    };
+
+    const moveDJ = (index: number, dir: -1 | 1) => {
+        const newIndex = index + dir;
+        if (newIndex < 0 || newIndex >= djs.length) return;
+        const newDjs = [...djs];
+        [newDjs[index], newDjs[newIndex]] = [newDjs[newIndex], newDjs[index]];
+        update({ djs: newDjs });
+    };
+
+    return (
+        <div className="space-y-6">
+            <div className="flex items-center justify-between mb-4">
+                <h2 className="font-bebas text-3xl tracking-wider">ДИДЖЕИ</h2>
+                <button
+                    onClick={addDJ}
+                    className="bg-accent hover:bg-accent-hover text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                >
+                    + Добавить
+                </button>
+            </div>
+
+            {djs.map((dj, i) => (
+                <AdminCard
+                    key={dj.id}
+                    title={dj.name}
+                    actions={
+                        <div className="flex gap-2">
+                            <SmallBtn onClick={() => moveDJ(i, -1)} disabled={i === 0}>↑</SmallBtn>
+                            <SmallBtn onClick={() => moveDJ(i, 1)} disabled={i === djs.length - 1}>↓</SmallBtn>
+                            <SmallBtn onClick={() => removeDJ(i)} danger>✕</SmallBtn>
+                        </div>
+                    }
+                >
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <Field
+                            label="Имя"
+                            value={dj.name}
+                            onChange={(v) => updateDJ(i, { name: v })}
+                        />
+                        <Field
+                            label="Теги (через запятую)"
+                            value={dj.tags.join(", ")}
+                            onChange={(v) =>
+                                updateDJ(i, {
+                                    tags: v.split(",").map((t) => t.trim()).filter(Boolean),
+                                })
+                            }
+                        />
+                    </div>
+                    <Field
+                        label="URL фото"
+                        value={dj.image}
+                        onChange={(v) => updateDJ(i, { image: v })}
+                        className="mt-4"
+                    />
+                    <TextArea
+                        label="Опыт"
+                        value={dj.experience}
+                        onChange={(v) => updateDJ(i, { experience: v })}
+                        className="mt-4"
+                    />
+                    <TextArea
+                        label="Описание"
+                        value={dj.description}
+                        onChange={(v) => updateDJ(i, { description: v })}
+                        className="mt-4"
+                    />
+                </AdminCard>
+            ))}
         </div>
     );
 }

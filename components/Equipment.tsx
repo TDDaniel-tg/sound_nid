@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSiteData } from "./SiteDataContext";
 import SectionTitle from "./SectionTitle";
@@ -11,6 +11,17 @@ export default function Equipment() {
     const equipmentTabs = data.equipmentTabs;
     const [activeTab, setActiveTab] = useState("sound");
     const currentTab = equipmentTabs.find((t) => t.id === activeTab) || equipmentTabs[0];
+
+    useEffect(() => {
+        const handleCustomEvent = (e: Event) => {
+            const tabId = (e as CustomEvent).detail;
+            if (equipmentTabs.find(t => t.id === tabId)) {
+                setActiveTab(tabId);
+            }
+        };
+        window.addEventListener('changeEquipmentTab', handleCustomEvent);
+        return () => window.removeEventListener('changeEquipmentTab', handleCustomEvent);
+    }, [equipmentTabs]);
 
     return (
         <section id="equipment" className="py-24 md:py-32 px-6">
