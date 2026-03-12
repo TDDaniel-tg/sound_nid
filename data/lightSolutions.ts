@@ -4,24 +4,26 @@ export const lightSolutions: Solution[] = [
     {
         id: "l1",
         name: "Комплект 1",
-        image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/svet.jpg",
         description: "Световая стойка 2шт + 8 Led Par",
         items: [
             "Световая стойка (2 шт)",
             "LED PAR (8 шт)",
         ],
         price: "по запросу",
+        packages: [],
     },
     {
         id: "l2",
         name: "Комплект 2",
-        image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/gif2komp.mp4",
         description: "2 тотема + 2 Wash 19x15/ 2 Beam 295",
         items: [
             "Тотемы (2 шт)",
             "Wash 19x15 (2 шт) ИЛИ Beam 295 (2 шт)",
         ],
         price: "по запросу",
+        packages: [],
     },
     {
         id: "l3",
@@ -36,6 +38,7 @@ export const lightSolutions: Solution[] = [
             "Хейзер (эффект тумана)",
         ],
         price: "по запросу",
+        packages: [],
     },
     {
         id: "l4",
@@ -47,5 +50,17 @@ export const lightSolutions: Solution[] = [
             "Стойки (2 шт)",
         ],
         price: "по запросу",
+        packages: [],
+    },
+    {
+        id: "l5",
+        name: "Комплект 5",
+        image: "/telegram_assets/gif5kompl.mp4",
+        description: "Portman p2 (2шт)",
+        items: [
+            "Portman p2 (2 шт)",
+        ],
+        price: "0 рублей",
+        packages: [],
     }
 ];

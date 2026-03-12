@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { SiteDataProvider, useSiteData, SiteData } from "@/components/SiteDataContext";
 import { Category, CategoryItem } from "@/data/categories";
-import { Solution } from "@/data/solutions";
+import { Solution, SolutionPackage } from "@/data/solutions";
 import { EquipmentCategory } from "@/data/equipment";
 import { DJ } from "@/data/djs";
 
@@ -271,11 +271,18 @@ function SolutionsEditor({
         const id = `sol_${Date.now()}`;
         const newSolution: Solution = {
             id,
-            name: "Новый комплект",
+            name: "Новая категория комплектов",
             image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop&q=80",
-            description: "Описание комплекта",
-            items: ["Позиция 1"],
-            price: "от 0 ₽",
+            description: "Описание категории",
+            packages: [
+                {
+                    name: "Новый комплект",
+                    price: "0 ₽",
+                    items: ["Позиция 1"]
+                }
+            ],
+            items: [],
+            price: "",
         };
         update({ solutions: [...solutions, newSolution] });
     };
@@ -291,6 +298,42 @@ function SolutionsEditor({
         if (newIndex < 0 || newIndex >= solutions.length) return;
         const newSolutions = [...solutions];
         [newSolutions[index], newSolutions[newIndex]] = [newSolutions[newIndex], newSolutions[index]];
+        update({ solutions: newSolutions });
+    };
+
+    const addPackage = (solIndex: number) => {
+        const newPkg: SolutionPackage = {
+            name: "Новый комплект",
+            price: "0 ₽",
+            items: ["Позиция 1"],
+        };
+        const newSolutions = [...solutions];
+        newSolutions[solIndex] = {
+            ...newSolutions[solIndex],
+            packages: [...(newSolutions[solIndex].packages || []), newPkg],
+        };
+        update({ solutions: newSolutions });
+    };
+
+    const updatePackage = (
+        solIndex: number,
+        pkgIndex: number,
+        updated: Partial<SolutionPackage>
+    ) => {
+        const newSolutions = [...solutions];
+        const newPackages = [...(newSolutions[solIndex].packages || [])];
+        newPackages[pkgIndex] = { ...newPackages[pkgIndex], ...updated };
+        newSolutions[solIndex] = { ...newSolutions[solIndex], packages: newPackages };
+        update({ solutions: newSolutions });
+    };
+
+    const removePackage = (solIndex: number, pkgIndex: number) => {
+        if (!confirm("Удалить этот вложенный комплект?")) return;
+        const newSolutions = [...solutions];
+        newSolutions[solIndex] = {
+            ...newSolutions[solIndex],
+            packages: (newSolutions[solIndex].packages || []).filter((_, i) => i !== pkgIndex),
+        };
         update({ solutions: newSolutions });
     };
 
@@ -320,42 +363,57 @@ function SolutionsEditor({
                 >
                     <div className="grid md:grid-cols-2 gap-4">
                         <Field
-                            label="Название"
+                            label="Название раздела (напр. Свадьбы)"
                             value={sol.name}
                             onChange={(v) => updateSolution(i, { name: v })}
                         />
                         <Field
-                            label="Цена"
-                            value={sol.price}
-                            onChange={(v) => updateSolution(i, { price: v })}
+                            label="URL фото (обложка)"
+                            value={sol.image}
+                            onChange={(v) => updateSolution(i, { image: v })}
                         />
                     </div>
-                    <Field
-                        label="URL фото"
-                        value={sol.image}
-                        onChange={(v) => updateSolution(i, { image: v })}
-                        className="mt-4"
-                    />
                     <TextArea
-                        label="Описание"
+                        label="Краткое описание"
                         value={sol.description}
                         onChange={(v) => updateSolution(i, { description: v })}
                         className="mt-4"
                     />
-                    <div className="mt-4">
-                        <label className="text-silver text-sm mb-2 block">
-                            Состав (каждая позиция с новой строки)
-                        </label>
-                        <textarea
-                            value={sol.items.join("\n")}
-                            onChange={(e) =>
-                                updateSolution(i, {
-                                    items: e.target.value.split("\n").filter(Boolean),
-                                })
-                            }
-                            rows={4}
-                            className="w-full bg-bg border border-border rounded-lg px-4 py-3 text-text outline-none focus:border-accent transition-colors text-sm font-mono"
-                        />
+
+                    <div className="mt-8 border-t border-border pt-6">
+                        <div className="flex items-center justify-between mb-4">
+                            <h4 className="font-bebas text-xl tracking-wider text-text">Вложенные комплекты ({sol.packages?.length || 0})</h4>
+                            <button
+                                onClick={() => addPackage(i)}
+                                className="text-accent hover:text-accent-hover text-sm font-semibold transition-colors"
+                            >
+                                + Добавить комплект
+                            </button>
+                        </div>
+                        <div className="space-y-4">
+                            {(sol.packages || []).map((pkg, pi) => (
+                                <div key={pi} className="bg-bg border border-border rounded-lg p-5">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <span className="font-bebas text-silver text-lg tracking-wider">Комплект #{pi + 1}</span>
+                                        <SmallBtn onClick={() => removePackage(i, pi)} danger>✕</SmallBtn>
+                                    </div>
+                                    <div className="grid md:grid-cols-2 gap-4 mb-4">
+                                        <Field label="Название комплекта (Малый, Средний)" value={pkg.name} onChange={v => updatePackage(i, pi, { name: v })} small />
+                                        <Field label="Цена комплекта" value={pkg.price} onChange={v => updatePackage(i, pi, { price: v })} small />
+                                    </div>
+                                    <label className="text-silver text-sm mb-2 block">Состав (каждая позиция с новой строки)</label>
+                                    <textarea
+                                        value={pkg.items.join("\n")}
+                                        onChange={(e) => updatePackage(i, pi, { items: e.target.value.split("\n").filter(Boolean) })}
+                                        rows={4}
+                                        className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text outline-none focus:border-accent transition-colors text-sm font-mono"
+                                    />
+                                </div>
+                            ))}
+                            {(!sol.packages || sol.packages.length === 0) && (
+                                <p className="text-silver/50 text-sm text-center py-4">Нет вложенных комплектов.</p>
+                            )}
+                        </div>
                     </div>
                 </AdminCard>
             ))}
@@ -390,6 +448,7 @@ function LightSolutionsEditor({
             description: "Описание светового комплекта",
             items: ["LED PAR × 4"],
             price: "от 0 ₽",
+            packages: [],
         };
         update({ lightSolutions: [...solutions, newSolution] });
     };
@@ -461,7 +520,7 @@ function LightSolutionsEditor({
                             Состав (каждая позиция с новой строки)
                         </label>
                         <textarea
-                            value={sol.items.join("\n")}
+                            value={(sol.items || []).join("\n")}
                             onChange={(e) =>
                                 updateSolution(i, {
                                     items: e.target.value.split("\n").filter(Boolean),

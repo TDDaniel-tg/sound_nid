@@ -127,25 +127,50 @@ export default function Solutions() {
                             {selectedSolution.name}
                         </h3>
                         <p className="text-silver mb-6">{selectedSolution.description}</p>
-                        <h4 className="font-bebas text-xl text-text tracking-wider mb-3">
-                            Состав комплекта
-                        </h4>
-                        <ul className="space-y-2 mb-6">
-                            {selectedSolution.items.map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-silver">
-                                    <span className="text-accent mt-1 text-xs">●</span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="border-t border-border pt-4">
-                            <div className="flex items-center justify-between">
-                                <span className="text-silver text-sm">Стоимость:</span>
-                                <span className="font-bebas text-3xl text-accent tracking-wider">
-                                    {selectedSolution.price}
-                                </span>
+                        
+                        {selectedSolution.packages && selectedSolution.packages.length > 0 ? (
+                            <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar border-y border-border py-4 mb-6">
+                                {selectedSolution.packages.map((pkg, i) => (
+                                    <div key={i} className="bg-surface border border-border rounded-xl p-5 hover:border-accent/30 transition-colors">
+                                        <div className="flex justify-between items-center mb-4 border-b border-border/50 pb-3">
+                                            <h4 className="font-bebas text-2xl text-text tracking-wider">{pkg.name}</h4>
+                                            <span className="font-bebas text-2xl text-accent tracking-wider">{pkg.price}</span>
+                                        </div>
+                                        <ul className="space-y-2">
+                                            {pkg.items.map((item, j) => (
+                                                <li key={j} className="flex items-start gap-3 text-silver text-sm">
+                                                    <span className="text-accent mt-1 text-[10px]">●</span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
                             </div>
-                        </div>
+                        ) : (
+                            <>
+                                <h4 className="font-bebas text-xl text-text tracking-wider mb-3">
+                                    Состав комплекта
+                                </h4>
+                                <ul className="space-y-2 mb-6 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
+                                    {selectedSolution.items?.map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-silver text-sm">
+                                            <span className="text-accent mt-1 text-[10px]">●</span>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="border-t border-border pt-4">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-silver text-sm">Стоимость:</span>
+                                        <span className="font-bebas text-3xl text-accent tracking-wider">
+                                            {selectedSolution.price}
+                                        </span>
+                                    </div>
+                                </div>
+                            </>
+                        )}
+
                         <a
                             href="#contact"
                             onClick={() => setSelectedSolution(null)}

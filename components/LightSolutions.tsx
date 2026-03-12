@@ -17,6 +17,13 @@ export default function LightSolutions() {
   );
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [timestamp, setTimestamp] = useState("");
+
+  useEffect(() => {
+    if (isInView) {
+      setTimestamp(`?t=${Date.now()}`);
+    }
+  }, [isInView]);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
@@ -66,14 +73,28 @@ export default function LightSolutions() {
                   className="embla__slide w-[280px] md:w-[340px] flex-shrink-0"
                 >
                   <div className="bg-surface border border-border rounded-2xl overflow-hidden group hover:border-accent/50 transition-all duration-300 h-full flex flex-col">
-                    <div className="relative h-48 overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                        style={{
-                          backgroundImage: `url(${solution.image})`,
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-surface via-black/30 to-transparent" />
+                    <div className="relative h-48 overflow-hidden bg-black/10">
+                      {solution.image.endsWith(".mp4") ? (
+                        <video
+                          src={solution.image}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      ) : (
+                        <img
+                          src={
+                            solution.image.endsWith(".gif") && timestamp
+                              ? `${solution.image}${timestamp}`
+                              : solution.image
+                          }
+                          alt={solution.name}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-surface via-black/30 to-transparent pointer-events-none" />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
                       <h3 className="font-bebas text-2xl text-text tracking-wider mb-2">
@@ -132,7 +153,7 @@ export default function LightSolutions() {
               Состав комплекта
             </h4>
             <ul className="space-y-2 mb-6 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
-              {selectedSolution.items.map((item, i) => (
+              {(selectedSolution.items || []).map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-silver">
                   <span className="text-accent mt-1 text-xs">●</span>
                   {item}
