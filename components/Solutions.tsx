@@ -128,6 +128,16 @@ export default function Solutions() {
                         </h3>
                         <p className="text-silver mb-6">{selectedSolution.description}</p>
                         
+                        {selectedSolution.equipmentImage && (
+                            <div className="mb-6 rounded-2xl overflow-hidden border border-border/50 shadow-lg">
+                                <img 
+                                    src={selectedSolution.equipmentImage} 
+                                    alt={`Оборудование для ${selectedSolution.name}`}
+                                    className="w-full h-auto object-cover max-h-[300px]"
+                                />
+                            </div>
+                        )}
+                        
                         {selectedSolution.packages && selectedSolution.packages.length > 0 ? (
                             <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar border-y border-border py-4 mb-6">
                                 {selectedSolution.packages.map((pkg, i) => (

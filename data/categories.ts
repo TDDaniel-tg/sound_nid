@@ -89,7 +89,7 @@ export const categories: Category[] = [
     {
         id: "cover_bands",
         name: "Кавер группы",
-        image: "/telegram_assets/cover_bands.jpg",
+        image: "/telegram_assets/kaver.jpg",
         items: [],
     },
 ];

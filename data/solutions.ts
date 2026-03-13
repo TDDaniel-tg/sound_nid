@@ -8,6 +8,7 @@ export interface Solution {
     id: string;
     name: string;
     image: string;
+    equipmentImage?: string;
     description: string;
     packages: SolutionPackage[];
     // Legacy fields to prevent immediate breaks
@@ -119,6 +120,7 @@ export const solutions: Solution[] = [
         id: "wedding",
         name: "Свадьбы",
         image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop&q=80",
+        equipmentImage: "/telegram_assets/equipment_set.png",
         description: "Подборки оборудования для идеального свадебного торжества.",
         packages: weddingPackages,
     },

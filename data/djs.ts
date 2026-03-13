@@ -80,4 +80,20 @@ export const djs: DJ[] = [
     experience: "LASKI CLUB РОДЧЕЛЬСКАЯ, ВОКРУГ СВЕТА НИКОЛЬСКАЯ, ЗЕЛЕНАЯ СОБАКА КУЗНЕЦКИЙ, SUMMER PUNCH, HOOKAH PLACE, VASILCHUKI",
     description: "Не просто ставлю музыку! Важнее чувствовать настроение гостей и вести их за собой, создавая идеальную атмосферу!",
   },
+  {
+    id: "honasty",
+    name: "Максим / HØNASTY",
+    image: "/telegram_assets/honasty.jpg",
+    tags: ["Fashion", "Резидент", "Корпоративы"],
+    experience: "354 Restaurant Group, Laski Night Club, Siyanie, Birds, Community Russia, Treff8",
+    description: "Основатель музыкального фешн-проекта KVAZAR, резидент 354 Restaurant Group. Опыт 3 года. Работал с Альфа банком, Яндексом, SANY, Газпром.",
+  },
+  {
+    id: "malahov",
+    name: "Даня Малахов",
+    image: "/telegram_assets/malahov.JPG",
+    tags: ["Английский", "Газпром", "VK FEST"],
+    experience: "VK FEST, Москва Фестиваль Географии, Газпром, все банки РФ. Опыт работы за рубежом.",
+    description: "Диджей компании Газпром. Регулярно выступаю на частных (VK FEST, ТОП банки РФ) и государственных мероприятиях. Свободно владею английским.",
+  },
 ];
