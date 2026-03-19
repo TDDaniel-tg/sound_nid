@@ -30,7 +30,7 @@ export default function Equipment() {
 
                 <SectionReveal>
                     {/* Tabs */}
-                    <div className="flex justify-center gap-2 mb-12">
+                    <div className="flex flex-wrap justify-center gap-2 mb-12">
                         {equipmentTabs.map((tab) => (
                             <button
                                 key={tab.id}
@@ -43,6 +43,19 @@ export default function Equipment() {
                                 {tab.label}
                             </button>
                         ))}
+                        <button
+                            onClick={() => {
+                                window.dispatchEvent(new CustomEvent('openCoverBands'));
+                                const servicesSection = document.getElementById('services');
+                                if (servicesSection) {
+                                    const y = servicesSection.getBoundingClientRect().top + window.scrollY - 100;
+                                    window.scrollTo({ top: y, behavior: 'smooth' });
+                                }
+                            }}
+                            className="font-bebas text-xl md:text-2xl px-8 py-3 rounded-lg tracking-wider transition-all duration-300 bg-surface text-silver hover:text-white border border-border hover:border-accent/50"
+                        >
+                            Кавер группы
+                        </button>
                     </div>
 
                     {/* Content */}

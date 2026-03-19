@@ -40,7 +40,7 @@ export default function Solutions() {
     }, [emblaApi, onSelect]);
 
     return (
-        <section className="py-24 md:py-32 px-6" ref={sectionRef}>
+        <section id="solutions" className="py-24 md:py-32 px-6" ref={sectionRef}>
             <div className="max-w-7xl mx-auto">
                 <SectionTitle text="ГОТОВЫЕ РЕШЕНИЯ" className="mb-16" />
 
@@ -128,32 +128,33 @@ export default function Solutions() {
                         </h3>
                         <p className="text-silver mb-6">{selectedSolution.description}</p>
                         
-                        {selectedSolution.equipmentImage && (
-                            <div className="mb-6 rounded-2xl overflow-hidden border border-border/50 shadow-lg">
-                                <img 
-                                    src={selectedSolution.equipmentImage} 
-                                    alt={`Оборудование для ${selectedSolution.name}`}
-                                    className="w-full h-auto object-cover max-h-[300px]"
-                                />
-                            </div>
-                        )}
-                        
                         {selectedSolution.packages && selectedSolution.packages.length > 0 ? (
                             <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar border-y border-border py-4 mb-6">
                                 {selectedSolution.packages.map((pkg, i) => (
-                                    <div key={i} className="bg-surface border border-border rounded-xl p-5 hover:border-accent/30 transition-colors">
-                                        <div className="flex justify-between items-center mb-4 border-b border-border/50 pb-3">
-                                            <h4 className="font-bebas text-2xl text-text tracking-wider">{pkg.name}</h4>
-                                            <span className="font-bebas text-2xl text-accent tracking-wider">{pkg.price}</span>
+                                    <div key={i} className="bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors">
+                                        {pkg.equipmentImage && (
+                                            <div className="w-full overflow-hidden">
+                                                <img 
+                                                    src={pkg.equipmentImage} 
+                                                    alt={`Оборудование — ${pkg.name}`}
+                                                    className="w-full h-auto object-contain"
+                                                />
+                                            </div>
+                                        )}
+                                        <div className="p-5">
+                                            <div className="flex justify-between items-center mb-4 border-b border-border/50 pb-3">
+                                                <h4 className="font-bebas text-2xl text-text tracking-wider">{pkg.name}</h4>
+                                                <span className="font-bebas text-2xl text-accent tracking-wider">{pkg.price}</span>
+                                            </div>
+                                            <ul className="space-y-2">
+                                                {pkg.items.map((item, j) => (
+                                                    <li key={j} className="flex items-start gap-3 text-silver text-sm">
+                                                        <span className="text-accent mt-1 text-[10px]">●</span>
+                                                        {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
-                                        <ul className="space-y-2">
-                                            {pkg.items.map((item, j) => (
-                                                <li key={j} className="flex items-start gap-3 text-silver text-sm">
-                                                    <span className="text-accent mt-1 text-[10px]">●</span>
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
                                     </div>
                                 ))}
                             </div>

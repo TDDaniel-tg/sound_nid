@@ -13,6 +13,14 @@ export default function Categories() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
+    useEffect(() => {
+        const handleOpenCoverBands = () => {
+            setActiveId('cover_bands');
+        };
+        window.addEventListener('openCoverBands', handleOpenCoverBands);
+        return () => window.removeEventListener('openCoverBands', handleOpenCoverBands);
+    }, []);
+
     const handleClick = (id: string) => {
         const map: Record<string, string | null> = {
             sound: 'equipment-sound',
@@ -46,8 +54,17 @@ export default function Categories() {
              }
              setActiveId(null);
         } else {
-             // For cover_bands or local slider
+             // For cover_bands — open accordion and scroll to it
              setActiveId(activeId === id ? null : id);
+             if (activeId !== id) {
+                 setTimeout(() => {
+                     const accordion = document.getElementById('category-accordion');
+                     if (accordion) {
+                         const y = accordion.getBoundingClientRect().top + window.scrollY - 100;
+                         window.scrollTo({ top: y, behavior: 'smooth' });
+                     }
+                 }, 100);
+             }
         }
     };
 
@@ -125,6 +142,7 @@ export default function Categories() {
                                 opacity: { duration: 0.4, delay: 0.1 },
                             }}
                             className="overflow-hidden mt-8"
+                            id="category-accordion"
                         >
                             <div className="border border-border rounded-2xl bg-surface/50 p-6 md:p-8">
                                 <h3 className="font-bebas text-3xl text-text mb-6 tracking-wider">

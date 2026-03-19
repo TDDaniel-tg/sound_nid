@@ -51,7 +51,7 @@ export default function LightSolutions() {
   if (!solutions || solutions.length === 0) return null;
 
   return (
-    <section className="py-24 md:py-32 px-6 bg-surface/30" ref={sectionRef}>
+    <section id="light-solutions" className="py-24 md:py-32 px-6 bg-surface/30" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         <SectionTitle text="СВЕТОВЫЕ КОМПЛЕКТЫ" className="mb-16" />
 

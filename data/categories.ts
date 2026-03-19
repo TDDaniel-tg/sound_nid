@@ -90,6 +90,19 @@ export const categories: Category[] = [
         id: "cover_bands",
         name: "Кавер группы",
         image: "/telegram_assets/kaver.jpg",
-        items: [],
+        items: [
+            {
+                id: "kb1",
+                name: "Группа United",
+                description: "Состав 4 человека (вокал М+Ж + 2 инструменталиста), 5 человек (+3 инструменталиста) или 6 человек (+4 инструменталиста + бэк-вокал)",
+                image: "/telegram_assets/kaver_1.jpg",
+            },
+            {
+                id: "kb2",
+                name: "НАШ BAND",
+                description: "Живое звучание высшего класса. Концерты с Олей Серябкиной, «Песнярами» и «Градусами». День города Москвы, Парк «Патриот», Газпром, «Сириус». Составы от 2 до 6 музыкантов.",
+                image: "/telegram_assets/kaver_2.jpg",
+            },
+        ],
     },
 ];

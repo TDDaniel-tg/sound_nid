@@ -2,13 +2,13 @@ export interface SolutionPackage {
     name: string;
     items: string[];
     price: string;
+    equipmentImage?: string;
 }
 
 export interface Solution {
     id: string;
     name: string;
     image: string;
-    equipmentImage?: string;
     description: string;
     packages: SolutionPackage[];
     // Legacy fields to prevent immediate breaks
@@ -20,6 +20,7 @@ const weddingPackages: SolutionPackage[] = [
     {
         name: "Малый комплект",
         price: "0 ₽",
+        equipmentImage: "/telegram_assets/equipment_set.png",
         items: [
             "JBL eon 715 (2 шт)",
             "Mackie mix12fx",
@@ -31,6 +32,7 @@ const weddingPackages: SolutionPackage[] = [
     {
         name: "Средний комплект",
         price: "0 ₽",
+        equipmentImage: "/telegram_assets/equipment_set_medium.png",
         items: [
             "FBT X-pro 115 (2 шт)",
             "FBT X-sub 118 (2 шт)",
@@ -44,6 +46,7 @@ const weddingPackages: SolutionPackage[] = [
     {
         name: "Большой комплект",
         price: "0 ₽",
+        equipmentImage: "/telegram_assets/equipment_set_large.png",
         items: [
             "FBT X-pro 115 (2 шт)",
             "FBT X-sub 118 (2 шт)",
@@ -57,6 +60,7 @@ const weddingPackages: SolutionPackage[] = [
     {
         name: "Большой + комплект",
         price: "0 ₽",
+        equipmentImage: "/telegram_assets/equipment_set_xlarge.png",
         items: [
             "FBT X-pro 115 (2 шт)",
             "FBT X-sub 118 (2 шт)",
@@ -74,6 +78,7 @@ const confPackages: SolutionPackage[] = [
     {
         name: "Малый",
         price: "0 ₽",
+        equipmentImage: "/telegram_assets/biz_set_small.png",
         items: [
             "Invotone DVA2000 (2 шт)",
             "Mackie Pro10fx",
@@ -85,6 +90,7 @@ const confPackages: SolutionPackage[] = [
     {
         name: "Средний",
         price: "0 ₽",
+        equipmentImage: "/telegram_assets/biz_set_medium.png",
         items: [
             "FBT X-pro 115 (2 шт)",
             "FBT X-sub 118 (2 шт)",
@@ -120,7 +126,6 @@ export const solutions: Solution[] = [
         id: "wedding",
         name: "Свадьбы",
         image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop&q=80",
-        equipmentImage: "/telegram_assets/equipment_set.png",
         description: "Подборки оборудования для идеального свадебного торжества.",
         packages: weddingPackages,
     },

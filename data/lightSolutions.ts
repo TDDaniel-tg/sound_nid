@@ -62,5 +62,16 @@ export const lightSolutions: Solution[] = [
         ],
         price: "0 рублей",
         packages: [],
+    },
+    {
+        id: "l6",
+        name: "Комплект 6",
+        image: "/telegram_assets/svet_6.jpg",
+        description: "Архитектурная подсветка LED Bar (8шт)",
+        items: [
+            "LED Bar (8 шт)",
+        ],
+        price: "0 рублей",
+        packages: [],
     }
 ];
