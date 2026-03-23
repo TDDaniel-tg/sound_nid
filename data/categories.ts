@@ -37,17 +37,6 @@ export const categories: Category[] = [
         ],
     },
     {
-        id: "sfx",
-        name: "Спецэффекты",
-        image: "/telegram_assets/sfx.jpg",
-        items: [
-            { id: "fx1", name: "Дым-машина", description: "Генератор сценического дыма", image: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=400&h=300&fit=crop&q=80" },
-            { id: "fx2", name: "Генератор тумана", description: "Создание атмосферного тумана", image: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=400&h=300&fit=crop&q=80" },
-            { id: "fx3", name: "Конфетти-пушка", description: "Пушка для конфетти и серпантина", image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=400&h=300&fit=crop&q=80" },
-            { id: "fx4", name: "Генератор мыльных пузырей", description: "Для шоу-программ", image: "https://images.unsplash.com/photo-1509457344848-78370309590b?w=400&h=300&fit=crop&q=80" },
-        ],
-    },
-    {
         id: "led",
         name: "LED-экраны",
         image: "/telegram_assets/led.jpg",

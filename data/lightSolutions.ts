@@ -28,7 +28,7 @@ export const lightSolutions: Solution[] = [
     {
         id: "l3",
         name: "Комплект 3",
-        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/svet3kompl_8bars.png",
         description: "Мощный комплект с заливкой, лучами и эффектами тумана",
         items: [
             "Тотемы (4 шт)",
@@ -43,7 +43,7 @@ export const lightSolutions: Solution[] = [
     {
         id: "l4",
         name: "Комплект 4",
-        image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/svet4kompl.mp4",
         description: "Laser Bar 2 шт + Стойки 2 шт",
         items: [
             "Laser Bar (2 шт)",

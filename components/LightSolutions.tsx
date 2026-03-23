@@ -73,7 +73,7 @@ export default function LightSolutions() {
                   className="embla__slide w-[280px] md:w-[340px] flex-shrink-0"
                 >
                   <div className="bg-surface border border-border rounded-2xl overflow-hidden group hover:border-accent/50 transition-all duration-300 h-full flex flex-col">
-                    <div className="relative h-48 overflow-hidden bg-black/10">
+                    <div className="relative h-64 overflow-hidden bg-black/10">
                       {solution.image.endsWith(".mp4") ? (
                         <video
                           src={solution.image}

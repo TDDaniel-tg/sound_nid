@@ -25,7 +25,6 @@ export default function Categories() {
         const map: Record<string, string | null> = {
             sound: 'equipment-sound',
             light: 'light-solutions',
-            sfx: 'equipment-sound',
             led: 'equipment-led',
             plasma: 'equipment-led',
             backline: 'equipment-sound',
