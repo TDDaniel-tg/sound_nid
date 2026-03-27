@@ -23,7 +23,7 @@ export default function Categories() {
 
     const handleClick = (id: string) => {
         const map: Record<string, string | null> = {
-            sound: 'equipment-sound',
+            sound: 'sound-solutions',
             light: 'light-solutions',
             led: 'equipment-led',
             plasma: 'equipment-led',
@@ -47,7 +47,7 @@ export default function Categories() {
              } else {
                  const section = document.getElementById(target);
                  if (section) {
-                     const y = section.getBoundingClientRect().top + window.scrollY - 100;
+                     const y = section.getBoundingClientRect().top + window.scrollY - 20;
                      window.scrollTo({ top: y, behavior: 'smooth' });
                  }
              }
@@ -96,11 +96,22 @@ export default function Categories() {
                                 ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
                             }}
                         >
-                            {/* Background image */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                                style={{ backgroundImage: `url(${category.image})` }}
-                            />
+                            {/* Background image/video */}
+                            {category.image.endsWith(".mp4") ? (
+                                <video
+                                    src={category.image}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                            ) : (
+                                <div
+                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                    style={{ backgroundImage: `url(${category.image})` }}
+                                />
+                            )}
 
                             {/* Overlay */}
                             <div
@@ -202,7 +213,7 @@ function CategorySlider({
                             className="embla__slide w-[260px] md:w-[300px] flex-shrink-0"
                         >
                             <div className="bg-bg border border-border rounded-xl overflow-hidden group hover:border-accent/50 transition-all duration-300">
-                                <div className="relative h-44 overflow-hidden">
+                                <div className="relative h-64 overflow-hidden">
                                     <div
                                         className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                                         style={{ backgroundImage: `url(${item.image})` }}

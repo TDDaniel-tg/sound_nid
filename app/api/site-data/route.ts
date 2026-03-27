@@ -5,6 +5,7 @@ import { solutions as defaultSolutions } from "@/data/solutions";
 import { equipmentTabs as defaultEquipmentTabs } from "@/data/equipment";
 import { djs as defaultDjs } from "@/data/djs";
 import { lightSolutions as defaultLightSolutions } from "@/data/lightSolutions";
+import { soundSolutions as defaultSoundSolutions } from "@/data/soundSolutions";
 
 const defaultContacts = {
   phone: "+7 (000) 000-00-00",
@@ -29,6 +30,7 @@ function getDefaults() {
     categories: defaultCategories,
     solutions: defaultSolutions,
     light_solutions: defaultLightSolutions,
+    sound_solutions: defaultSoundSolutions,
     equipment_tabs: defaultEquipmentTabs,
     djs: defaultDjs,
   };
@@ -47,6 +49,7 @@ export async function GET() {
       categories: d.categories,
       solutions: d.solutions,
       lightSolutions: d.light_solutions,
+      soundSolutions: d.sound_solutions,
       equipmentTabs: d.equipment_tabs,
       djs: d.djs,
     });
@@ -67,6 +70,7 @@ export async function GET() {
       categories: d.categories,
       solutions: d.solutions,
       lightSolutions: d.light_solutions,
+      soundSolutions: d.sound_solutions,
       equipmentTabs: d.equipment_tabs,
       djs: d.djs,
     });
@@ -78,6 +82,7 @@ export async function GET() {
     categories: data.categories || defaultCategories,
     solutions: data.solutions || defaultSolutions,
     lightSolutions: data.light_solutions || defaultLightSolutions,
+    soundSolutions: data.sound_solutions || defaultSoundSolutions,
     equipmentTabs: data.equipment_tabs || defaultEquipmentTabs,
     djs: data.djs || defaultDjs,
   });

@@ -22,6 +22,7 @@ import {
 } from "@/data/equipment";
 import { djs as defaultDjs, DJ } from "@/data/djs";
 import { lightSolutions as defaultLightSolutions } from "@/data/lightSolutions";
+import { soundSolutions as defaultSoundSolutions } from "@/data/soundSolutions";
 
 export interface SiteContacts {
   phone: string;
@@ -42,6 +43,7 @@ export interface SiteData {
   categories: Category[];
   solutions: Solution[];
   lightSolutions: Solution[];
+  soundSolutions: Solution[];
   equipmentTabs: EquipmentTab[];
   djs: DJ[];
 }
@@ -69,6 +71,7 @@ function getDefaults(): SiteData {
     categories: defaultCategories,
     solutions: defaultSolutions,
     lightSolutions: defaultLightSolutions,
+    soundSolutions: defaultSoundSolutions,
     equipmentTabs: defaultEquipmentTabs,
     djs: defaultDjs,
   };

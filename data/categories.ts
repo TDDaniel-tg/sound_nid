@@ -48,7 +48,7 @@ export const categories: Category[] = [
     {
         id: "plasma",
         name: "Плазменные панели",
-        image: "/telegram_assets/plasma.jpg",
+        image: "/telegram_assets/plazm_video.mp4",
         items: [
             { id: "p1", name: 'ТВ 55" на стойке', description: '55" панель с мобильной стойкой', image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop&q=80" },
             { id: "p2", name: 'ТВ 65" на стойке', description: '65" панель с мобильной стойкой', image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=400&h=300&fit=crop&q=80" },

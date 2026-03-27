@@ -9,6 +9,7 @@ import LightSolutions from "@/components/LightSolutions";
 import Brands from "@/components/Brands";
 import StatBar from "@/components/StatBar";
 import Equipment from "@/components/Equipment";
+import SoundSolutions from "@/components/SoundSolutions";
 import DJs from "@/components/DJs";
 import About from "@/components/About";
 import ContactForm from "@/components/ContactForm";
@@ -33,6 +34,8 @@ export default function Home() {
         <LightSolutions />
         <SectionDivider />
         <Brands />
+        <SectionDivider />
+        <SoundSolutions />
         <SectionDivider />
         <Equipment />
         <SectionDivider />
