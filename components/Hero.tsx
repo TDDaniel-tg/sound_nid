@@ -46,15 +46,17 @@ export default function Hero() {
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/15 rounded-full blur-[150px]" />
             <div className="absolute top-1/3 right-0 w-[300px] h-[300px] bg-accent/8 rounded-full blur-[120px]" />
 
-            {/* Watermark drifting text */}
+            {/* Watermark logo */}
             <motion.div
                 className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
-                animate={{ x: [0, 30, 0, -30, 0], y: [0, -15, 0, 15, 0] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
             >
-                <span className="font-bebas text-[20vw] text-white/[0.03] whitespace-nowrap">
-                    SOUND NID
-                </span>
+                <img
+                    src="/telegram_assets/logo.jpg"
+                    alt=""
+                    className="w-[60vw] max-w-[500px] h-auto opacity-[0.06] rounded-full"
+                />
             </motion.div>
 
             {/* Content */}
