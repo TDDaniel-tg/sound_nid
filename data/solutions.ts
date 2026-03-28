@@ -60,7 +60,7 @@ const weddingPackages: SolutionPackage[] = [
     {
         name: "Большой + комплект",
         price: "0 ₽",
-        equipmentImage: "/telegram_assets/equipment_set_xlarge.png",
+        equipmentImage: "/telegram_assets/equipment_set_xlarge.jpg",
         items: [
             "FBT X-pro 115 (2 шт)",
             "FBT X-sub 118 (2 шт)",
