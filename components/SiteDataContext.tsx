@@ -50,7 +50,7 @@ export interface SiteData {
 
 const defaultTexts: SiteTexts = {
   heroTitle: "ЗВУК И СВЕТ ДЛЯ ВАШЕГО МЕРОПРИЯТИЯ",
-  heroSubtitle: "Аренда профессионального оборудования в Москве",
+  heroSubtitle: "Аренда профессионального оборудования в Москве и МО",
   aboutText1:
     "Sound NID — основана в 2018 году. Начиналась как небольшая инициатива, посвящённая качественному звуку. Сегодня это команда профессионалов, объединённых общей целью — обеспечить события клиентов безупречным звучанием.",
   aboutText2:
@@ -60,7 +60,7 @@ const defaultTexts: SiteTexts = {
 };
 
 const defaultContacts: SiteContacts = {
-  phone: "+7 (000) 000-00-00",
+  phone: "+79685904652",
   telegram: "@soundnid",
 };
 

@@ -132,14 +132,14 @@ export const solutions: Solution[] = [
     {
         id: "corporate",
         name: "Корпоративы",
-        image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/korporativ.jpg",
         description: "Готовые сеты для корпоративных мероприятий любого масштаба.",
         packages: weddingPackages,
     },
     {
         id: "conference",
         name: "Бизнес-конференции",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/biz_konf.jpg",
         description: "Звук, радиомикрофоны и экраны для деловых событий.",
         packages: confPackages,
     },

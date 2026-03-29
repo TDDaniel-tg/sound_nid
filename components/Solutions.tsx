@@ -79,7 +79,7 @@ export default function Solutions() {
                                                 />
                                             ) : (
                                                 <div
-                                                    className="absolute inset-0 bg-cover bg-bottom transition-transform duration-500 group-hover:scale-110"
+                                                    className="absolute inset-0 bg-cover bg-top transition-transform duration-500 group-hover:scale-110"
                                                     style={{
                                                         backgroundImage: `url(${solution.image})`,
                                                     }}
