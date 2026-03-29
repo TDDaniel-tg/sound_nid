@@ -94,4 +94,10 @@ export const categories: Category[] = [
             },
         ],
     },
+    {
+        id: "speceffects",
+        name: "Спецэффекты",
+        image: "/telegram_assets/speceffects.jpg",
+        items: [],
+    },
 ];

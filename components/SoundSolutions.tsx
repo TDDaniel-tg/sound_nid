@@ -66,13 +66,13 @@ export default function SoundSolutions() {
                   className="embla__slide w-[280px] md:w-[340px] flex-shrink-0"
                 >
                   <div className="bg-surface border border-border rounded-2xl overflow-hidden group hover:border-accent/50 transition-all duration-300 h-full flex flex-col">
-                    <div className="relative h-64 overflow-hidden bg-black/10">
+                    <div className="relative h-84 overflow-hidden bg-black/10">
                       <img
                         src={solution.image}
                         alt={solution.name}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-surface via-black/30 to-transparent pointer-events-none" />
+                      {/* no gradient overlay */}
                     </div>
                     <div className="p-6 flex flex-col flex-1">
                       <h3 className="font-bebas text-2xl text-text tracking-wider mb-2">

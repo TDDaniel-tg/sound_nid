@@ -29,6 +29,7 @@ export default function Categories() {
             plasma: 'equipment-led',
             backline: 'equipment-sound',
             dj: 'djs',
+            speceffects: 'equipment-sfx',
             cover_bands: null,
         };
 

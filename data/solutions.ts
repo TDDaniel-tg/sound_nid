@@ -125,7 +125,7 @@ export const solutions: Solution[] = [
     {
         id: "wedding",
         name: "Свадьбы",
-        image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/svadb_video.mp4",
         description: "Подборки оборудования для идеального свадебного торжества.",
         packages: weddingPackages,
     },
@@ -146,7 +146,7 @@ export const solutions: Solution[] = [
     {
         id: "kids",
         name: "Детские праздники",
-        image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&h=400&fit=crop&q=80",
+        image: "/telegram_assets/detskie_video.mp4",
         description: "Веселые и громкие решения для дней рождения и утренников.",
         packages: weddingPackages,
     }

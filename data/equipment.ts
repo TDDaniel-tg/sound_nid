@@ -128,7 +128,7 @@ export const equipmentTabs: EquipmentTab[] = [
     },
     {
         id: "led",
-        label: "LED",
+        label: "Экраны",
         categories: [
             {
                 title: "LED-ЭКРАНЫ",

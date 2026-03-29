@@ -67,14 +67,25 @@ export default function Solutions() {
                                     }}
                                 >
                                     <div className="bg-surface border border-border rounded-2xl overflow-hidden group hover:border-accent/50 transition-all duration-300 h-full flex flex-col">
-                                        <div className="relative h-48 overflow-hidden">
-                                            <div
-                                                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                                                style={{
-                                                    backgroundImage: `url(${solution.image})`,
-                                                }}
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-surface via-black/30 to-transparent" />
+                                        <div className="relative h-64 overflow-hidden">
+                                            {solution.image.endsWith('.mp4') ? (
+                                                <video
+                                                    src={solution.image}
+                                                    autoPlay
+                                                    loop
+                                                    muted
+                                                    playsInline
+                                                    className="absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-110"
+                                                />
+                                            ) : (
+                                                <div
+                                                    className="absolute inset-0 bg-cover bg-bottom transition-transform duration-500 group-hover:scale-110"
+                                                    style={{
+                                                        backgroundImage: `url(${solution.image})`,
+                                                    }}
+                                                />
+                                            )}
+                                            {/* no gradient overlay */}
                                         </div>
                                         <div className="p-6 flex flex-col flex-1">
                                             <h3 className="font-bebas text-2xl text-text tracking-wider mb-2">

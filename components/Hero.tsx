@@ -47,13 +47,18 @@ export default function Hero() {
             <div className="absolute top-1/3 right-0 w-[300px] h-[300px] bg-accent/8 rounded-full blur-[120px]" />
 
             {/* Watermark logo */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+            <motion.div
+                className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+                initial={{ opacity: 0.35 }}
+                animate={{ opacity: 0.08 }}
+                transition={{ delay: 1.5, duration: 1.5, ease: "easeOut" }}
+            >
                 <img
                     src="/telegram_assets/logo.jpg"
                     alt=""
-                    className="w-[80vw] max-w-[700px] h-auto opacity-[0.06] rounded-full"
+                    className="w-[80vw] max-w-[700px] h-auto rounded-full"
                 />
-            </div>
+            </motion.div>
 
             {/* Content */}
             <div className="relative z-10 text-center px-6 max-w-5xl">
