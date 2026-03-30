@@ -106,6 +106,7 @@ const confPackages: SolutionPackage[] = [
     {
         name: "Большой",
         price: "0 ₽",
+        equipmentImage: "/telegram_assets/logo.jpg",
         items: [
             "FBT X-pro 115 (2 шт)",
             "FBT X-sub 118 (2 шт)",
