@@ -147,7 +147,7 @@ export const solutions: Solution[] = [
     {
         id: "kids",
         name: "Детские праздники",
-        image: "/telegram_assets/detskie_video.mp4",
+        image: "/telegram_assets/detsk.jpg",
         description: "Веселые и громкие решения для дней рождения и утренников.",
         packages: weddingPackages,
     }
