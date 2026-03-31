@@ -1151,7 +1151,7 @@ export default function AdminPage() {
         if (auth === "true") setIsLoggedIn(true);
     }, []);
 
-    if (!mounted) return <div className="min-h-screen bg-bg" style={{ minHeight: '100vh', background: '#0a0a0a' }} />;
+    if (!mounted) return <div className="min-h-screen bg-bg" />;
 
     if (!isLoggedIn) {
         return (

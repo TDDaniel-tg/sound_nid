@@ -10,7 +10,7 @@ export const lightSolutions: Solution[] = [
             "Световая стойка (2 шт)",
             "LED PAR (8 шт)",
         ],
-        price: "по запросу",
+        price: "10 500 ₽",
         packages: [],
     },
     {
@@ -22,7 +22,7 @@ export const lightSolutions: Solution[] = [
             "Тотемы (2 шт)",
             "Wash 19x15 (2 шт) ИЛИ Beam 295 (2 шт)",
         ],
-        price: "по запросу",
+        price: "29 000 ₽",
         packages: [],
     },
     {
@@ -37,7 +37,7 @@ export const lightSolutions: Solution[] = [
             "LED Bar (8 шт)",
             "Хейзер (эффект тумана)",
         ],
-        price: "по запросу",
+        price: "69 000 ₽",
         packages: [],
     },
     {
@@ -49,7 +49,7 @@ export const lightSolutions: Solution[] = [
             "Laser Bar (2 шт)",
             "Стойки (2 шт)",
         ],
-        price: "по запросу",
+        price: "11 500 ₽",
         packages: [],
     },
     {
@@ -60,7 +60,7 @@ export const lightSolutions: Solution[] = [
         items: [
             "Portman p2 (2 шт)",
         ],
-        price: "0 рублей",
+        price: "8 500 ₽",
         packages: [],
     },
     {
@@ -71,7 +71,7 @@ export const lightSolutions: Solution[] = [
         items: [
             "LED Bar (8 шт)",
         ],
-        price: "0 рублей",
+        price: "19 000 ₽",
         packages: [],
     }
 ];

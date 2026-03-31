@@ -19,7 +19,7 @@ export interface Solution {
 const weddingPackages: SolutionPackage[] = [
     {
         name: "Малый комплект",
-        price: "0 ₽",
+        price: "17 500 ₽",
         equipmentImage: "/telegram_assets/equipment_set.png",
         items: [
             "JBL eon 715 (2 шт)",
@@ -31,7 +31,7 @@ const weddingPackages: SolutionPackage[] = [
     },
     {
         name: "Средний комплект",
-        price: "0 ₽",
+        price: "57 000 ₽",
         equipmentImage: "/telegram_assets/equipment_set_medium.png",
         items: [
             "FBT X-pro 115 (2 шт)",
@@ -45,7 +45,7 @@ const weddingPackages: SolutionPackage[] = [
     },
     {
         name: "Большой комплект",
-        price: "0 ₽",
+        price: "90 000 ₽",
         equipmentImage: "/telegram_assets/equipment_set_large.png",
         items: [
             "FBT X-pro 115 (2 шт)",
@@ -59,7 +59,7 @@ const weddingPackages: SolutionPackage[] = [
     },
     {
         name: "Большой + комплект",
-        price: "0 ₽",
+        price: "106 000 ₽",
         equipmentImage: "/telegram_assets/equipment_set_xlarge.jpg",
         items: [
             "FBT X-pro 115 (2 шт)",

@@ -11,7 +11,7 @@ export const soundSolutions: Solution[] = [
             "SB 18 (4 шт)",
             "La8 (2 шт)",
         ],
-        price: "0 рублей",
+        price: "по запросу",
         packages: [],
     },
     {
@@ -38,7 +38,7 @@ export const soundSolutions: Solution[] = [
             "Радиомикрофоны Axelvox ds7000ht (2 шт)",
             "(доставка и монтаж внутри МКАД)",
         ],
-        price: "0 рублей",
+        price: "13 500 ₽",
         packages: [],
     },
     {
@@ -53,7 +53,7 @@ export const soundSolutions: Solution[] = [
             "Радиосистема Shure BLX PG58",
             "«в цену входит доставка внутри мкад, монтаж/демонтаж, настройка»",
         ],
-        price: "0 рублей",
+        price: "22 000 ₽",
         packages: [],
     },
     {
@@ -68,7 +68,7 @@ export const soundSolutions: Solution[] = [
             "Радиосистема Shure BLX PG58",
             "(доставка и монтаж внутри МКАД)",
         ],
-        price: "0 рублей",
+        price: "11 500 ₽",
         packages: [],
     },
 ];
