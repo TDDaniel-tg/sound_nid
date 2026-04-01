@@ -66,7 +66,7 @@ export default function SoundSolutions() {
                   className="embla__slide w-[300px] md:w-[380px] flex-shrink-0"
                 >
                   <div className="bg-surface border border-border rounded-2xl overflow-hidden group hover:border-accent/50 transition-all duration-300 h-full flex flex-col">
-                    <div className="relative h-84 overflow-hidden bg-black/10">
+                    <div className="relative h-[280px] overflow-hidden bg-black/10">
                       <img
                         src={solution.image}
                         alt={solution.name}
