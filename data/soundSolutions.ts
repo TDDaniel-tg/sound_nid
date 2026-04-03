@@ -48,7 +48,7 @@ export const soundSolutions: Solution[] = [
     {
         id: "s4",
         name: "Комплект 4",
-        image: "/telegram_assets/sound_kompl4.png",
+        image: "/telegram_assets/sound_kompl4.jpg",
         description: "FBT X-pro 115 (2 шт) + FBT X-sub 118 (2 шт) + Mackie Pro10fx + Shure BLX",
         items: [
             "FBT X-pro 115 (2 шт)",

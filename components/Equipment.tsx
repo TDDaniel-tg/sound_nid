@@ -3,11 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSiteData } from "./SiteDataContext";
-import SectionTitle from "./SectionTitle";
 import SectionReveal from "./SectionReveal";
 
-function CategoryDropdown({ category, index }: { category: { title: string; items: string[] }; index: number }) {
+function CategoryDropdown({ category, index, forceOpen }: { category: { title: string; items: string[] }; index: number; forceOpen?: boolean }) {
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        if (forceOpen) setOpen(true);
+    }, [forceOpen]);
 
     return (
         <motion.div
@@ -66,6 +69,7 @@ export default function Equipment() {
     const { data } = useSiteData();
     const equipmentTabs = data.equipmentTabs;
     const [activeTab, setActiveTab] = useState("sound");
+    const [expandAll, setExpandAll] = useState(false);
     const currentTab = equipmentTabs.find((t) => t.id === activeTab) || equipmentTabs[0];
 
     useEffect(() => {
@@ -73,6 +77,9 @@ export default function Equipment() {
             const tabId = (e as CustomEvent).detail;
             if (equipmentTabs.find(t => t.id === tabId)) {
                 setActiveTab(tabId);
+                setExpandAll(true);
+                // Reset after animation
+                setTimeout(() => setExpandAll(false), 500);
             }
         };
         window.addEventListener('changeEquipmentTab', handleCustomEvent);
@@ -154,9 +161,10 @@ export default function Equipment() {
                                 <div className="grid md:grid-cols-2 gap-x-12">
                                     {currentTab?.categories.map((category, i) => (
                                         <CategoryDropdown
-                                            key={category.title}
+                                            key={`${activeTab}-${category.title}`}
                                             category={category}
                                             index={i}
+                                            forceOpen={expandAll}
                                         />
                                     ))}
                                 </div>

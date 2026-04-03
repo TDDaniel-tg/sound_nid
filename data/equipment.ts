@@ -67,20 +67,6 @@ export const equipmentTabs: EquipmentTab[] = [
                 items: ["Mackie", "Behringer", "Soundcraft", "Yamaha"],
             },
             {
-                title: "БЭКЛАЙН — БАРАБАНЫ",
-                items: [
-                    "Yamaha Tour Custom Maple (BD22, Tom 10/12, FT 16, SN 14) — 4 стойки под тарелки, стойка hi-hat, педаль Iron Cobra, стойка малого барабана, стул, коврик",
-                    "Tama Starclassic Performer (BD22, Tom 10/12, FT 16, SN 14) — 4 стойки под тарелки, стойка hi-hat, педаль Iron Cobra, стойка малого барабана, стул, коврик",
-                ],
-            },
-            {
-                title: "КЛАВИШНЫЕ",
-                items: [
-                    "Nord Stage 3 — 88 клавиш",
-                    "Roland RD-800 — 88 клавиш",
-                ],
-            },
-            {
                 title: "DJ-ОБОРУДОВАНИЕ",
                 items: [
                     "Pioneer RX3",
@@ -138,10 +124,6 @@ export const equipmentTabs: EquipmentTab[] = [
                 title: "ТВ НА СТОЙКЕ",
                 items: ['55"', '65"', '75"', '86"'],
             },
-            {
-                title: "КАРАОКЕ",
-                items: ["AST-100", "AST-250"],
-            },
         ],
     },
     {
@@ -163,10 +145,37 @@ export const equipmentTabs: EquipmentTab[] = [
                     "Генератор снега",
                 ],
             },
+        ],
+    },
+    {
+        id: "backline",
+        label: "БЭКЛАЙН",
+        categories: [
             {
-                title: "ПРОЧЕЕ",
+                title: "БАРАБАНЫ",
                 items: [
-                    "Сценический вентилятор",
+                    "Yamaha Tour Custom Maple (BD22, Tom 10/12, FT 16, SN 14) — 4 стойки под тарелки, стойка hi-hat, педаль Iron Cobra, стойка малого барабана, стул, коврик",
+                    "Tama Starclassic Performer (BD22, Tom 10/12, FT 16, SN 14) — 4 стойки под тарелки, стойка hi-hat, педаль Iron Cobra, стойка малого барабана, стул, коврик",
+                ],
+            },
+            {
+                title: "КЛАВИШНЫЕ",
+                items: [
+                    "Nord Stage 3 — 88 клавиш",
+                    "Roland RD-800 — 88 клавиш",
+                ],
+            },
+        ],
+    },
+    {
+        id: "other",
+        label: "ПРОЧЕЕ",
+        categories: [
+            {
+                title: "КАРАОКЕ",
+                items: [
+                    "Караоке AST 100",
+                    "Караоке AST 250",
                 ],
             },
         ],
