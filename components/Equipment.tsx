@@ -27,7 +27,7 @@ function CategoryDropdown({ category, index, forceOpen }: { category: { title: s
                 onClick={() => setOpen(!open)}
                 className="w-full flex items-center justify-between py-4 group"
             >
-                <h3 className="font-bebas text-2xl md:text-3xl text-accent tracking-wider">
+                <h3 className="font-bebas text-2xl md:text-3xl text-accent tracking-wider text-left">
                     {category.title}
                 </h3>
                 <motion.span
